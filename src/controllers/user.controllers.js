@@ -110,12 +110,11 @@ const resetPassword = catchError(async(req, res) => {
     await EmailCode.create(body)
     return res.json(user)
 })
-
-const UpdatePassword = catchError(async (req,res)=>{
+const updatePassword = catchError(async (req,res)=>{
 
 
     const {code} = req.params
-    const {password} = req.body 
+    const {password} = req.body //postman
 
     const userCode = await EmailCode.findOne({where:{code}})
     if(!userCode) return res.sendStatus(401)
@@ -142,5 +141,5 @@ module.exports = {
     login,
     logged, 
     resetPassword,
-    UpdatePassword
+    updatePassword
 }
