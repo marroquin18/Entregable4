@@ -114,7 +114,7 @@ const updatePassword = catchError(async (req,res)=>{
 
 
     const {code} = req.params
-    const {password} = req.body //postman
+    const {password} = req.body
 
     const userCode = await EmailCode.findOne({where:{code}})
     if(!userCode) return res.sendStatus(401)
